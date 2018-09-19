@@ -31,9 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'rest_framework.authtoken',
     'rest_framework',
     'restful_app.apps.RestfulAppConfig',
     'app1.apps.App1Config',
+    'user_auth.apps.UserAuthConfig',
     'django.contrib.admin',  # 管理员站点， 你很快就会使用它
     'django.contrib.auth',  # 认证授权系统
     'django.contrib.contenttypes',  # 内容类型框架
@@ -51,6 +53,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    #  只有使用rest_framework的API才会受到JWT的保护
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
 
 ROOT_URLCONF = 'learn_django.urls'
 
