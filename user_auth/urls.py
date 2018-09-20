@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'^token-verify/', verify_jwt_token),
 ]
 
+#  此处的URL为绝对URL，请求必须和所规定URL保持一致
+#  例如 login/ 如果不带反斜杠会报错
+
 
