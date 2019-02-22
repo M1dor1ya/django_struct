@@ -78,6 +78,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    #  以下代码会禁用掉REST自带的WEB API界面，只返回JSON
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
 }
 
 ROOT_URLCONF = 'learn_django.urls'
