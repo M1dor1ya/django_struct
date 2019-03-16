@@ -57,6 +57,33 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',  # 管理静态文件的框架
 ]
 
+# 日志记录相关配置
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': 'Time:%(asctime)s|Filename:%(filename)s|Func:%(funcName)s|Line:%(lineno)d|Level:'
+                      '%(levelname)s]|%(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'F:\PythonPro\cso_alpha\cso_alpha\debug.log',
+            'formatter': 'standard'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
